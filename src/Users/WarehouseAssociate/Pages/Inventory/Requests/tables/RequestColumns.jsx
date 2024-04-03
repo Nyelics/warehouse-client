@@ -5,10 +5,10 @@ import {Button} from "react-bootstrap";
 const RequestColumns = () => {
   const [receiving, setReceiving] = useState();
 
-  const receivingSupply = (sku) => {
+  function receivingSupply(sku) {
     console.log(sku);
     // setReceiving(true);
-  };
+  }
   // Define your handleReceive function here
   const columns = [
     {
@@ -70,7 +70,7 @@ const RequestColumns = () => {
           <Button
             variant="primary"
             className="px-3 py-2"
-            onClick=  receivingSupply(row.supply_code)}
+            onClick={receivingSupply(row.supply_code)}
           >
             Received
           </Button>
