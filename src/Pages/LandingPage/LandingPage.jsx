@@ -1,6 +1,6 @@
 import React, {useEffect} from "react";
 import {Link} from "react-router-dom";
-import "../../../../../public/assets/css/LandingPage.css";
+import "./LandingPage.css";
 import AboutSection from "./AboutSection";
 import HomeSection from "./HomeSection";
 import SecuritySection from "./SecuritySection";
@@ -240,6 +240,3 @@ const LandingPage = () => {
 };
 
 export default LandingPage;
-{
-  /* Other sections */
-}

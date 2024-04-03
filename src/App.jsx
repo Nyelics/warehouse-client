@@ -1,7 +1,7 @@
 import "./App.css";
 import React, {useEffect, useState} from "react";
 import {Routes, Route, Navigate} from "react-router-dom";
-import LandingPage from "./Users/Administrator/Pages/LandingPage/LandingPage";
+import LandingPage from "./Pages/LandingPage/LandingPage";
 import Login from "./Pages/LoginPage/Login";
 import AdminLayoutPage from "./Users/Administrator/layout/LayoutPage";
 import QELayoutPage from "./Users/QualityEngineer/layout/LayoutPage";
