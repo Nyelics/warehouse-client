@@ -27,7 +27,7 @@ const SupplyManageComponent = ({isSetManageSupply, supplyData}) => {
         whileTap={{scale: 0.9}}
         class="bx bx-left-arrow-alt"
         style={{cursor: "pointer"}}
-        onClick=  isSetManageSupply(false)}
+        onClick={() => isSetManageSupply(false)}
       ></motion.i>{" "}
       <h5 className="p-3">Manage Supply</h5>
       <Container>
