@@ -26,7 +26,7 @@ const peopleComponent = ({setDisplayMessages, setIsShownChatBox}) => {
     }
   };
 
-  const viewMessage = async (person) => {
+  async function viewMessage(person) {
     try {
       return await getMessage({
         my_token: sessionData.token,
@@ -36,7 +36,7 @@ const peopleComponent = ({setDisplayMessages, setIsShownChatBox}) => {
     } catch (error) {
       console.error("Error fetching messages:", error);
     }
-  };
+  }
 
   function handleActiveCircle(users, person) {
     return users.find((user) => {

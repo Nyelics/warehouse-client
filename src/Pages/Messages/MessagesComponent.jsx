@@ -37,14 +37,14 @@ const MessagesComponent = ({data}) => {
     };
   }, [socket]);
 
-  const insertMessage = async (data) => {
+  async function insertMessage(data) {
     try {
       const res = await store(data);
       console.log(res);
     } catch (error) {
       console.error("Error fetching messages:", error);
     }
-  };
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();

@@ -21,14 +21,14 @@ const Login = () => {
     {role_name: "Warehouse Associate", route: "/wa/inventory"},
   ];
 
-  const onSubmit = async (values) => {
+  async function onSubmit(values) {
     const token = await signIn(values);
     if (token) {
       console.log(token);
       const sessionData = await signInVerification(token);
       routeByRole(routes, sessionData.data.role_name);
     }
-  };
+  }
 
   function routeByRole(routes, roleName) {
     const route = routes.find((r) => r.role_name === roleName);
