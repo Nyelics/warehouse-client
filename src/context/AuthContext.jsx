@@ -2,7 +2,7 @@ import {createContext, useContext, useReducer} from "react";
 
 export const AuthContext = createContext();
 
-export const authReducer = (state, action) => {
+export const authReducer = (state = initialState, action) => {
   switch (action.type) {
     case "LOGIN":
       return {...state, isLoggedIn: true, token: action.payload};

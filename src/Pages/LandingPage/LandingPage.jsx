@@ -37,26 +37,26 @@ const LandingPage = () => {
     }
   }, []);
 
-  // SHOW MENU
-  const showMenu = (toggleId, navId) => {
-    const toggle = document.getElementById(toggleId);
-    const nav = document.getElementById(navId);
+  // // SHOW MENU
+  // const showMenu = (toggleId, navId) => {
+  //   const toggle = document.getElementById(toggleId);
+  //   const nav = document.getElementById(navId);
 
-    if (toggle && nav) {
-      const handleClick = () => {
-        nav.classList.toggle("show-menu");
-      };
+  //   if (toggle && nav) {
+  //     const handleClick = () => {
+  //       nav.classList.toggle("show-menu");
+  //     };
 
-      toggle.addEventListener("click", handleClick);
+  //     toggle.addEventListener("click", handleClick);
 
-      return () => {
-        toggle.removeEventListener("click", handleClick);
-      };
-    }
-  };
+  //     return () => {
+  //       toggle.removeEventListener("click", handleClick);
+  //     };
+  //   }
+  // };
 
   useEffect(() => {
-    showMenu("nav-toggle", "nav-menu");
+    // showMenu("nav-toggle", "nav-menu");
 
     // REMOVE MENU MOBILE
     const navLink = document.querySelectorAll(".nav__link");
@@ -74,36 +74,36 @@ const LandingPage = () => {
   }, []);
 
   // SCROLL SECTIONS ACTIVE LINK
-  useEffect(() => {
-    const sections = document.querySelectorAll("section[id]");
+  // useEffect(() => {
+  //   const sections = document.querySelectorAll("section[id]");
 
-    const scrollActive = () => {
-      const scrollY = window.pageYOffset;
+  //   const scrollActive = () => {
+  //     const scrollY = window.pageYOffset;
 
-      sections.forEach((current) => {
-        const sectionHeight = current.offsetHeight;
-        const sectionTop = current.offsetTop - 50;
-        const sectionId = current.getAttribute("id");
+  //     sections.forEach((current) => {
+  //       const sectionHeight = current.offsetHeight;
+  //       const sectionTop = current.offsetTop - 50;
+  //       const sectionId = current.getAttribute("id");
 
-        const navMenuLink = document.querySelector(
-          `.nav__menu a[href*="${sectionId}"]`
-        );
-        if (navMenuLink) {
-          if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-            navMenuLink.classList.add("active-link");
-          } else {
-            navMenuLink.classList.remove("active-link");
-          }
-        }
-      });
-    };
+  //       const navMenuLink = document.querySelector(
+  //         `.nav__menu a[href*="${sectionId}"]`
+  //       );
+  //       if (navMenuLink) {
+  //         if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+  //           navMenuLink.classList.add("active-link");
+  //         } else {
+  //           navMenuLink.classList.remove("active-link");
+  //         }
+  //       }
+  //     });
+  //   };
 
-    window.addEventListener("scroll", scrollActive);
+  //   window.addEventListener("scroll", scrollActive);
 
-    return () => {
-      window.removeEventListener("scroll", scrollActive);
-    };
-  }, []);
+  //   return () => {
+  //     window.removeEventListener("scroll", scrollActive);
+  //   };
+  // }, []);
 
   // CHANGE BACKGROUND HEADER
   useEffect(() => {
@@ -179,7 +179,7 @@ const LandingPage = () => {
           <Link to="admin/dashboard" className="nav__logo">
             kar<span>gada</span>
           </Link>
-          <div className="nav__menu" id="nav-menu" onClick={showMenu}>
+          <div className="nav__menu" id="nav-menu">
             <ul className="nav__list">
               <li className="nav__item">
                 <a href="#home" className="nav__link active-link">
