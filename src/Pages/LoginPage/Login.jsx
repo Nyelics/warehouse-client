@@ -6,12 +6,11 @@ import {useSessionContext} from "../../hooks/useSessionContext";
 import {verify} from "../../api/account";
 import {useNavigate} from "react-router-dom";
 const Login = () => {
-  const [errorMessage, setErrorMessage] = useState(null);
   const {signIn, error, isLoading} = useSignIn();
   const {setSessionData} = useSessionContext();
   const navigate = useNavigate();
   const mainContainer = useRef(null);
-  const passwordInput = useRef(null);
+  // const passwordInput = useRef(null);
 
   const routes = [
     {role_name: "Administrator", route: "/dashboard"},
@@ -62,15 +61,15 @@ const Login = () => {
     password: "",
   };
 
-  const showPassword = () => {
-    if (passwordInput.current.type == "password") {
-      passwordInput.current.type = "text";
-      eye.current.classList = "fa fa-eye";
-    } else {
-      passwordInput.current.type = "password";
-      eye.current.classList = "fa fa-eye-slash";
-    }
-  };
+  // const showPassword = () => {
+  //   if (passwordInput.current.type == "password") {
+  //     passwordInput.current.type = "text";
+  //     eye.current.classList = "fa fa-eye";
+  //   } else {
+  //     passwordInput.current.type = "password";
+  //     eye.current.classList = "fa fa-eye-slash";
+  //   }
+  // };
 
   return (
     <>
