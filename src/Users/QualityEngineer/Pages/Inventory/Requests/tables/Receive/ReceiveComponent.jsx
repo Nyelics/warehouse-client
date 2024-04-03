@@ -206,7 +206,7 @@ const ReceiveComponent = ({setReceiving, productSku}) => {
             whileHover={{scale: 1.5}}
             whileTap={{scale: 0.6}}
             className="bx bxs-arrow-to-left"
-            onClick=  setReceiving(false)}
+            onClick={() => setReceiving(false)}
             style={{cursor: "pointer"}}
           ></motion.i>
           <h5 style={{marginLeft: "10px"}}>Quality Report</h5>
