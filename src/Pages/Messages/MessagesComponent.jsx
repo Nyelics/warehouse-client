@@ -46,9 +46,7 @@ const MessagesComponent = ({data}) => {
     }
   }
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
+  const handleSubmit = () => {
     const newDateTime = new Date();
 
     const senderDetails = {
