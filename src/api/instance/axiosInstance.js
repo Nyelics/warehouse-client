@@ -1,4 +1,4 @@
 import axios from "axios";
 export default axios.create({
-  baseURL: "http://localhost:3036/api/",
+  baseURL: "https://bcp-wms.netlify.app/api/",
 });
