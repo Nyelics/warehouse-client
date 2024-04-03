@@ -26,7 +26,7 @@ const StorageTable = ({setIsShownStorageLocation, storageData}) => {
           <Button
             variant="outline-info"
             className="mb-3 px-3"
-            onClick={() => setIsShownStorageLocation(true)}
+            onClick=  setIsShownStorageLocation(true)}
           >
             Manage Storage
           </Button>

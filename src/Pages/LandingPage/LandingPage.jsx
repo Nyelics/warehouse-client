@@ -126,7 +126,6 @@ const LandingPage = () => {
 
   // SHOW SCROLL UP
   useEffect(() => {
-    console.log("tanginamo");
     const scrollUp = () => {
       const scrollUp = document.getElementById("scroll-up");
 

@@ -89,7 +89,7 @@ const peopleComponent = ({setDisplayMessages, setIsShownChatBox}) => {
               // href={`#${people.user_id}`}
               style={{height: "150px", padding: "20px"}}
               className="mb-2"
-              onClick={() => handleChatBox(people)}
+              onClick={handleChatBox(people)}
             >
               <div style={{display: "flex"}}>
                 {people.user_image_link ? (

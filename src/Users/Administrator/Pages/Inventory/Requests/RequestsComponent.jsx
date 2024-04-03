@@ -10,7 +10,7 @@ const RequestsComponent = () => {
 
   return (
     <>
-      <div className="btn btn-primary mb-3" onClick={() => setShowModal(true)}>
+      <div className="btn btn-primary mb-3" onClick=  setShowModal(true)}>
         Replenish
       </div>
       <RequestsTable />

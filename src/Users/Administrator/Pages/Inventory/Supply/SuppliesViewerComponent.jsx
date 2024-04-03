@@ -64,7 +64,7 @@ const SuppliesViewerComponent = ({isSetManageSupply, setSupplyData}) => {
                         <Card.Footer>
                           <Button
                             variant="success"
-                            onClick={() =>
+                            onClick= 
                               supplyCapacityData({
                                 storage_name: unit.name,
                                 storage_capacity: unit.capacity,

@@ -93,7 +93,7 @@ const RequestColumns = () => {
             <Button
               variant="primary"
               className="px-3 py-2"
-              onClick={() => receivingSupply(row.supply_code)}
+              onClick=  receivingSupply(row.supply_code)}
             >
               Received
             </Button>

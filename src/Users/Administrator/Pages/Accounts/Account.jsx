@@ -77,7 +77,7 @@ const Account = () => {
                   <Button
                     variant="success"
                     className="p-2"
-                    onClick={() => handleOnOpenCreate()}
+                    onClick={handleOnOpenCreate()}
                   >
                     Create User Account
                   </Button>
@@ -87,7 +87,7 @@ const Account = () => {
                     variant="primary"
                     className="p-2"
                     style={{marginLeft: "10px"}}
-                    onClick={() => handleOnOpenUpdate()}
+                    onClick={handleOnOpenUpdate()}
                   >
                     Update User Account
                   </Button>
@@ -97,7 +97,7 @@ const Account = () => {
                     variant="outline-secondary"
                     className="p-2"
                     style={{marginLeft: "10px"}}
-                    onClick={() => handleOnOpenManageRoles()}
+                    onClick={handleOnOpenManageRoles()}
                   >
                     Manage Roles
                   </Button>

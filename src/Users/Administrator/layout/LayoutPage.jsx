@@ -5,7 +5,6 @@ import Sidebar from "../components/SidebarComponent";
 import Menubar from "../../../components/MenubarComponent";
 import {ToastContainer} from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import {motion} from "framer-motion";
 
 const AdminLayoutPage = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);

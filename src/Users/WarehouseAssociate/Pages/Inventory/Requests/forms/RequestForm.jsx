@@ -167,7 +167,7 @@ const RequestForm = ({setIsShownStorageLocation}) => {
                         <Col sm={12} lg={12} className="mb-3">
                           <Button
                             variant="secondary"
-                            onClick={() => setIsShownStorageLocation(true)}
+                            onClick=  setIsShownStorageLocation(true)}
                           >
                             Create Storage Location
                           </Button>

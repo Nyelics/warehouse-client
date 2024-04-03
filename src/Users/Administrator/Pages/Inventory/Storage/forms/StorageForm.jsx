@@ -37,7 +37,7 @@ const StorageLocForm = ({setIsShownStorageLocation}) => {
         whileTap={{scale: 0.9}}
         class="bx bx-left-arrow-alt"
         style={{cursor: "pointer"}}
-        onClick={() => setIsShownStorageLocation(false)}
+        onClick=  setIsShownStorageLocation(false)}
       ></motion.i>
       <Form onSubmit={formik.handleSubmit}>
         {/* {loading && <Spinner animation="border" />} */}
