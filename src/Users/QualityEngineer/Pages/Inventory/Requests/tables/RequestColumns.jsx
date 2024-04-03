@@ -6,10 +6,10 @@ import {Type} from "react-bootstrap-table2-editor";
 const RequestColumns = () => {
   const [receiving, setReceiving] = useState(false);
   const [productSku, setProductSku] = useState(null);
-  const receivingSupply = (sku) => {
+  function receivingSupply(sku) {
     setProductSku(sku);
     setReceiving(true);
-  };
+  }
 
   const getStatusColor = (status) => {
     switch (status) {
@@ -93,7 +93,7 @@ const RequestColumns = () => {
             <Button
               variant="primary"
               className="px-3 py-2"
-              onClick=  receivingSupply(row.supply_code)}
+              onClick={receivingSupply(row.supply_code)}
             >
               Received
             </Button>
