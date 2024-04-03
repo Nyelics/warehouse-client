@@ -105,13 +105,13 @@ const RequestForm = ({setIsShownStorageLocation}) => {
     fetchData();
   }, []);
 
-  const handleStorageNameChange = (currentValue) => {
+  function handleStorageNameChange(currentValue) {
     storageLocationData.forEach((item) => {
       if (item.id === currentValue) {
         capacityChange.current.value = item.capacity;
       }
     });
-  };
+  }
   return (
     <Formik
       initialValues={initialValues.supplyRequestFields}
@@ -167,7 +167,7 @@ const RequestForm = ({setIsShownStorageLocation}) => {
                         <Col sm={12} lg={12} className="mb-3">
                           <Button
                             variant="secondary"
-                            onClick=  setIsShownStorageLocation(true)}
+                            onClick={setIsShownStorageLocation(true)}
                           >
                             Create Storage Location
                           </Button>

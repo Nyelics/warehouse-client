@@ -115,13 +115,13 @@ const RequestForm = ({setIsShownStorageLocation}) => {
     fetchData();
   }, []);
 
-  const handleStorageNameChange = (currentValue) => {
+  function handleStorageNameChange(currentValue) {
     storageLocationData.forEach((item) => {
       if (item.id === currentValue) {
         capacityChange.current.value = item.capacity;
       }
     });
-  };
+  }
   return (
     <Formik
       initialValues={initialValues.supplyRequestFields}

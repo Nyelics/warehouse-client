@@ -13,13 +13,13 @@ const SupplyManageComponent = ({isSetManageSupply, supplyData}) => {
       (supplyData.storage_used / supplyData.storage_capacity) * 100
     );
   }, [supplyData]);
-  const handleSupplyCommand = (value) => {
+  function handleSupplyCommand(value) {
     if (value === "Stock Transfer") {
       setCommand(<StockTransferComponent maxValue={supplyData.storage_used} />);
     } else if (value === "For Delivery") {
       setCommand(<StockDeliveryComponent />);
     }
-  };
+  }
   return (
     <div>
       <motion.i
