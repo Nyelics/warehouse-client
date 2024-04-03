@@ -64,13 +64,11 @@ const SuppliesViewerComponent = ({isSetManageSupply, setSupplyData}) => {
                         <Card.Footer>
                           <Button
                             variant="success"
-                            onClick= 
-                              supplyCapacityData({
-                                storage_name: unit.name,
-                                storage_capacity: unit.capacity,
-                                storage_used: unit.total_quantity,
-                              })
-                            }
+                            onClick={supplyCapacityData({
+                              storage_name: unit.name,
+                              storage_capacity: unit.capacity,
+                              storage_used: unit.total_quantity,
+                            })}
                           >
                             Manage
                           </Button>
