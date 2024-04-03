@@ -7,10 +7,11 @@ const RequestsComponent = () => {
   const [isShownStorageLocation, setIsShownStorageLocation] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const handleCloseModal = () => setShowModal(false);
+  ``;
 
   return (
     <>
-      <div className="btn btn-primary mb-3" onClick=  setShowModal(true)}>
+      <div className="btn btn-primary mb-3" onClick={() => setShowModal(true)}>
         Replenish
       </div>
       <RequestsTable />
