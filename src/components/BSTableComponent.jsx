@@ -1,8 +1,5 @@
 import BootstrapTable from "react-bootstrap-table-next";
-import ToolkitProvider, {
-  Search,
-  CSVExport,
-} from "react-bootstrap-table2-toolkit";
+import ToolkitProvider, {CSVExport} from "react-bootstrap-table2-toolkit";
 import cellEditFactory from "react-bootstrap-table2-editor";
 import paginationFactory from "react-bootstrap-table2-paginator";
 import PropTypes from "prop-types"; // Import PropTypes
@@ -15,7 +12,6 @@ const BSTableComponent = ({
   BSRowEvent,
   BShandleCellEdit,
 }) => {
-  const {SearchBar} = Search;
   const {ExportCSVButton} = CSVExport;
   return (
     <>
@@ -23,13 +19,11 @@ const BSTableComponent = ({
         keyField={BSKey}
         data={BSData}
         columns={BSColumn}
-        search
         exportCSV
       >
         {(props) => (
           <div>
             <div className="d-flex">
-              <SearchBar {...props.searchProps} />
               <ExportCSVButton
                 {...props.csvProps}
                 className="btn btn-primary p-2"

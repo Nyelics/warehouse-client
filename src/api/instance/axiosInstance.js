@@ -1,4 +1,6 @@
 import axios from "axios";
+const HTTP_URL = import.meta.env.VITE_API_HTTP_URL;
+// const HTTP_URL_LOCAL_URL = import.meta.env.VITE_API_LOCAL_HTTP_URL;
 export default axios.create({
-  baseURL: "https://bcp-wms.netlify.app/api/",
+  baseURL: HTTP_URL,
 });
