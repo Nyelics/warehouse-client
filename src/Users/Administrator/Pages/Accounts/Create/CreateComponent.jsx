@@ -3,7 +3,7 @@ import {toast} from "react-toastify";
 import {motion} from "framer-motion";
 import {roles} from "../../../../../api/account";
 import {register} from "../../../../../api/account";
-import React, {useEffect, useState} from "react";
+import {useEffect, useState} from "react";
 import {Col, Row, Card, Button} from "react-bootstrap";
 import initialValues from "../../../../../utils/initialValues.json";
 import FormikControl from "../../../../../components/Formik/FormikControl";
@@ -84,7 +84,7 @@ const CreateComponent = () => {
                       label="Password"
                       name="password"
                       onChange={formik.handleChange}
-                      placeholder="&#9676;&#9676;&#9676;&#9676;&#9676;&#9676;&#9676;&#9676;&#9676;"
+                      placeholder="&amp;#9676;&amp;#9676;&amp;#9676;&amp;#9676;&amp;#9676;&amp;#9676;&amp;#9676;&amp;#9676;&amp;#9676;"
                     />
                   </Col>
                   <Col sm={12} md={3} className="mb-3">
@@ -94,7 +94,7 @@ const CreateComponent = () => {
                       label="Contact"
                       name="contact"
                       onChange={formik.handleChange}
-                      placeholder="ex: 09&#9677;&#9677;&#9677;&#9677;&#9677;&#9677;&#9677;&#9677;&#9677;"
+                      placeholder="ex: 09&amp;#9676;&amp;#9676;&amp;#9676;&amp;#9676;&amp;#9676;&amp;#9676;&amp;#9676;&amp;#9676;&amp;#9676;"
                     />
                   </Col>
                   <Col sm={12} md={7} className="mb-3">
@@ -144,9 +144,7 @@ const CreateComponent = () => {
                         })}
                       />
                     ) : (
-                      <h5 className="text-danger">
-                        Ain't gonna work - create role first
-                      </h5>
+                      <h5 className="text-danger">Create Role First</h5>
                       // <Button variant="secondary">Create Role</Button>
                     )}
                   </Col>

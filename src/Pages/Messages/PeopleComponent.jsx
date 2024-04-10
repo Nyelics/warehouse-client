@@ -1,30 +1,32 @@
-import React, {useEffect, useState} from "react";
+import {useEffect, useState} from "react";
 import {ListGroup} from "react-bootstrap";
 import {getMessages, getMessage} from "../../api/message";
 import {GoDot, GoDotFill} from "react-icons/go";
 import {useSessionContext} from "../../hooks/useSessionContext";
 import {useWebSocket} from "../../hooks/useWebSocket";
 import {motion} from "framer-motion";
-const peopleComponent = ({setDisplayMessages, setIsShownChatBox}) => {
+import PropTypes from "prop-types"; // Import PropTypes
+
+const PeopleComponent = ({setDisplayMessages, setIsShownChatBox}) => {
   const [people, setpeople] = useState([]);
   const {onlineUsers} = useWebSocket();
   const {sessionData} = useSessionContext();
   useEffect(() => {
+    const viewMessages = async () => {
+      try {
+        const res = await getMessages({
+          data: sessionData.data,
+          token: sessionData.token,
+        });
+        const data = await res;
+        setpeople(data);
+      } catch (error) {
+        console.error("Error fetching messages:", error);
+      }
+    };
+
     viewMessages();
   }, [sessionData, onlineUsers]);
-
-  const viewMessages = async () => {
-    try {
-      const res = await getMessages({
-        data: sessionData.data,
-        token: sessionData.token,
-      });
-      const data = await res;
-      setpeople(data);
-    } catch (error) {
-      console.error("Error fetching messages:", error);
-    }
-  };
 
   async function viewMessage(person) {
     try {
@@ -182,4 +184,9 @@ const peopleComponent = ({setDisplayMessages, setIsShownChatBox}) => {
   );
 };
 
-export default peopleComponent;
+PeopleComponent.propTypes = {
+  setDisplayMessages: PropTypes.func.isRequired,
+  setIsShownChatBox: PropTypes.func.isRequired,
+};
+
+export default PeopleComponent;

@@ -1,4 +1,3 @@
-import React from "react";
 import {
   Chart as ChartJS,
   ArcElement,
@@ -74,13 +73,7 @@ const Dashboard = () => {
       },
     ],
   };
-  const options = {
-    scales: {
-      x: {
-        type: "linear", // Change to 'linear' or 'logarithmic' as needed
-      },
-    },
-  };
+
   return (
     <>
       <div className="row">

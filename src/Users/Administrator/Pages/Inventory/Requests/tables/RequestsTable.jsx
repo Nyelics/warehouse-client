@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import {useState, useEffect} from "react";
 import {columns as supReqColumns} from "./RequestColumns";
 import {getSupplies} from "../../../../../../api/supply";
 import BSTableComponent from "../../../../../../components/BSTableComponent";

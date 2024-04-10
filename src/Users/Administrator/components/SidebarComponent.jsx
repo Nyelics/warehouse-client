@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import {useEffect} from "react";
 import {Link} from "react-router-dom";
 import {useLogOut} from "../../../hooks/useLogOut";
 import {useSessionContext} from "../../../hooks/useSessionContext";

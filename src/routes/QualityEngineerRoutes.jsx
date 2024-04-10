@@ -1,4 +1,3 @@
-import React from "react";
 import Dashboard from "../Users/QualityEngineer/Pages/Dashboard/Dashboard";
 import Inventory from "../Users/QualityEngineer/Pages/Inventory/Inventory";
 // import Messages from "../Users/QualityEngineer/Pages/Messages/Messages";

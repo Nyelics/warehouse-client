@@ -1,7 +1,6 @@
-// FormikControl.js
-import React from "react";
 import {Field, ErrorMessage} from "formik";
 import {Form} from "react-bootstrap";
+import PropTypes from "prop-types"; // Import PropTypes
 
 const Checkbox = ({label, name, ...rest}) => {
   return (
@@ -17,6 +16,11 @@ const Checkbox = ({label, name, ...rest}) => {
       <ErrorMessage name={name} component="div" className="text-danger" />
     </Form.Group>
   );
+};
+
+Checkbox.propTypes = {
+  label: PropTypes.func.isRequired,
+  name: PropTypes.func.isRequired,
 };
 
 export default Checkbox;

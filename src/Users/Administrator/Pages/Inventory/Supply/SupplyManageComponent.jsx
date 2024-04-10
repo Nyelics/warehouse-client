@@ -1,10 +1,12 @@
-import React, {useState, useEffect} from "react";
+import {useState, useEffect} from "react";
 import {motion} from "framer-motion";
 import {Row, Col, ProgressBar, Container} from "react-bootstrap";
 import FormikControl from "../../../../../components/Formik/FormikControl";
 import {Form, Formik} from "formik";
 import StockTransferComponent from "./StockTransferComponent";
 import StockDeliveryComponent from "./StockDeliveryComponent";
+import PropTypes from "prop-types"; // Import PropTypes
+
 const SupplyManageComponent = ({isSetManageSupply, supplyData}) => {
   const [percentage, setPercentage] = useState();
   const [command, setCommand] = useState(null);
@@ -104,5 +106,8 @@ const SupplyManageComponent = ({isSetManageSupply, supplyData}) => {
     </div>
   );
 };
-
+SupplyManageComponent.propTypes = {
+  isSetManageSupply: PropTypes.func.isRequired,
+  supplyData: PropTypes.func.isRequired,
+};
 export default SupplyManageComponent;

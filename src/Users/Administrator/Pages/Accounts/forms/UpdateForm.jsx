@@ -1,10 +1,11 @@
-import React, {useEffect, useState} from "react";
+import {useEffect, useState} from "react";
 import {Formik, Form} from "formik";
-import {Col, Row, Card, Button} from "react-bootstrap";
+import {Col, Row, Button} from "react-bootstrap";
 import {roles} from "../../../../../api/account";
 import FormikControl from "../../../../../components/Formik/FormikControl";
 import {motion} from "framer-motion";
-import {toast} from "react-toastify";
+import PropTypes from "prop-types"; // Import PropTypes
+
 const UpdateForm = ({dataToUpdate}) => {
   const [updateData, setUpdateData] = useState({}); // Initialize empty state for initial values
   const [userRoles, setUserRoles] = useState([]); // Initialize empty state for user roles
@@ -190,6 +191,10 @@ const UpdateForm = ({dataToUpdate}) => {
       )}
     </Formik>
   );
+};
+
+UpdateForm.propTypes = {
+  dataToUpdate: PropTypes.func.isRequired,
 };
 
 export default UpdateForm;

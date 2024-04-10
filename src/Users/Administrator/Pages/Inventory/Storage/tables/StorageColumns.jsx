@@ -17,7 +17,7 @@ export const columns = [
     text: "Capacity",
     hidden: false,
     sort: true,
-    formatter: (cell, row) => {
+    formatter: (cell) => {
       // Customize the rendering of the "Price" cell, you can use your currency conversion function here
       return <span>{`${cell.toLocaleString()} units`}</span>;
     },

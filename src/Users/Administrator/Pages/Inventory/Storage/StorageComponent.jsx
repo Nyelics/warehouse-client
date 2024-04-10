@@ -1,6 +1,6 @@
-import React, {useState, useEffect} from "react";
+import {useState, useEffect} from "react";
 import {getStorages} from "../../../../../api/storage";
-import {Row, Col, Button} from "react-bootstrap";
+import {Row, Col} from "react-bootstrap";
 import DoughnutChartComponent from "../../../../../components/DoughnutChartComponent";
 import StorageTable from "./tables/StorageTable";
 import StorageLocForm from "./forms/StorageForm";

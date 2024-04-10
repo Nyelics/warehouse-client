@@ -1,7 +1,8 @@
-import React, {useEffect, useState} from "react";
+import {useEffect, useState} from "react";
 import BSTableComponent from "../../../../../components/BSTableComponent";
 import {getSupplies} from "../../../../../../api/supply";
 import {columns} from "./SupplyColumns";
+import {formatHumanReadableDate} from "../../../../../../utils/dateConverter";
 const SupplyTable = () => {
   const [supply, setSupply] = useState([]);
 

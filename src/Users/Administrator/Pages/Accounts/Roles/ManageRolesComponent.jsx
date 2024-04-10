@@ -1,4 +1,3 @@
-import React from "react";
 import {Formik, Form} from "formik";
 import {toast} from "react-toastify";
 import {motion} from "framer-motion";

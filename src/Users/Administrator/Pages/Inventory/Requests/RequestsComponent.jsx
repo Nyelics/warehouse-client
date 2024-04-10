@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import {useState} from "react";
 import ModalComponent from "../../../../../components/ModalComponent";
 import RequestsTable from "./tables/RequestsTable";
 import RequestForm from "./forms/RequestForm";
@@ -7,7 +7,6 @@ const RequestsComponent = () => {
   const [isShownStorageLocation, setIsShownStorageLocation] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const handleCloseModal = () => setShowModal(false);
-  ``;
 
   return (
     <>

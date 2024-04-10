@@ -1,7 +1,9 @@
-import React, {useState, useEffect} from "react";
-import {Alert, Card, Row, Col, Button} from "react-bootstrap";
+import {useState, useEffect} from "react";
+import {Card, Row, Col, Button} from "react-bootstrap";
 import useStorage from "../../../../../hooks/api/useStorage";
 import {completed} from "../../../../../api/supply";
+import PropTypes from "prop-types"; // Import PropTypes
+
 const SuppliesViewerComponent = ({isSetManageSupply, setSupplyData}) => {
   const {storageData} = useStorage();
   const [units, setUnits] = useState([]);
@@ -88,6 +90,10 @@ const SuppliesViewerComponent = ({isSetManageSupply, setSupplyData}) => {
       )}
     </Row>
   );
+};
+SuppliesViewerComponent.propTypes = {
+  isSetManageSupply: PropTypes.func.isRequired,
+  setSupplyData: PropTypes.func.isRequired,
 };
 
 export default SuppliesViewerComponent;

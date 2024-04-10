@@ -5,6 +5,7 @@ import {store} from "../../api/message";
 import {formatHumanReadableDate} from "../../utils/dateConverter";
 import {useSessionContext} from "../../hooks/useSessionContext";
 import {useWebSocket} from "../../hooks/useWebSocket";
+import PropTypes from "prop-types";
 
 const MessagesComponent = ({data}) => {
   const {sessionData} = useSessionContext();
@@ -146,6 +147,10 @@ const MessagesComponent = ({data}) => {
       </Card>
     </motion.div>
   );
+};
+
+MessagesComponent.propTypes = {
+  data: PropTypes.object.isRequired, // Adjust the prop type as needed
 };
 
 export default MessagesComponent;

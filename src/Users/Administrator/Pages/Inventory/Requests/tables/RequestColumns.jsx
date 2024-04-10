@@ -24,7 +24,7 @@ export const columns = [
     text: "Status",
     hidden: false,
     sort: true,
-    style: (cell, row) => {
+    style: (cell) => {
       return {
         backgroundColor: cell === "Pending" ? "green" : "red",
         color: "white",
@@ -35,7 +35,7 @@ export const columns = [
     dataField: "date_requested",
     text: "Request Date",
     hidden: true,
-    formatter(cell, row) {
+    formatter(cell) {
       return formatHumanReadableDate(cell);
     },
   },

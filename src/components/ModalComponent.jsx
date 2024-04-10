@@ -1,5 +1,6 @@
-import React, {Children} from "react";
 import {Modal} from "react-bootstrap";
+import PropTypes from "prop-types"; // Import PropTypes
+
 const ModalComponent = ({showModal, closeModal, title, children}) => {
   return (
     <Modal show={showModal} onHide={closeModal} size="lg">
@@ -9,6 +10,13 @@ const ModalComponent = ({showModal, closeModal, title, children}) => {
       <Modal.Body>{children}</Modal.Body>
     </Modal>
   );
+};
+
+ModalComponent.propTypes = {
+  showModal: PropTypes.func.isRequired,
+  closeModal: PropTypes.func.isRequired,
+  title: PropTypes.func.isRequired,
+  children: PropTypes.func.isRequired,
 };
 
 export default ModalComponent;

@@ -1,17 +1,11 @@
-import React, {useState} from "react";
-import {Col, Row, Card, Button, ListGroup} from "react-bootstrap";
+import {useState} from "react";
+import {Col, Row, Card, Button} from "react-bootstrap";
 import {motion} from "framer-motion";
 import CreateComponent from "./Create/CreateComponent";
 import UpdateComponent from "./Update/UpdateComponent";
 import ManageRolesComponent from "./Roles/ManageRolesComponent";
 const Account = () => {
-  const [sessionData] = useState(
-    JSON.parse(localStorage.getItem("sessionData"))
-  );
   const [isRendered, setIsRendered] = useState(<CreateComponent />);
-  // const [isAdminCreate, setIsAdminCreate] = useState(true);
-  // const [isAdminUpdate, setIsAdminUpdate] = useState(false);
-  // const [isAdminManageRoles, setIsAdminManageRoles] = useState(false);
 
   function handleOnOpenCreate() {
     setIsRendered(<CreateComponent />);

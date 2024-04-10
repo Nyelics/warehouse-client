@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useRef} from "react";
+import {useState, useEffect} from "react";
 import {Formik, Form} from "formik";
 import FormikControl from "../../../../../../components/Formik/FormikControl";
 import {toast} from "react-toastify";
@@ -9,11 +9,12 @@ import {getStorages} from "../../../../../../api/storage";
 import {store} from "../../../../../../api/supply";
 import initialValues from "../../../../../../utils/initialValues.json";
 import {motion} from "framer-motion";
+import PropTypes from "prop-types"; // Import PropTypes
+
 const RequestForm = ({setIsShownStorageLocation}) => {
   const [supplyData, setSupplyData] = useState([]);
   const [storageLocationData, setStorageLocationData] = useState([]);
   const [managers, setManagers] = useState([]);
-  const capacityChange = useRef();
 
   const onSubmit = async (values) => {
     try {
@@ -115,13 +116,6 @@ const RequestForm = ({setIsShownStorageLocation}) => {
     fetchData();
   }, []);
 
-  function handleStorageNameChange(currentValue) {
-    storageLocationData.forEach((item) => {
-      if (item.id === currentValue) {
-        capacityChange.current.value = item.capacity;
-      }
-    });
-  }
   return (
     <Formik
       initialValues={initialValues.supplyRequestFields}
@@ -168,8 +162,6 @@ const RequestForm = ({setIsShownStorageLocation}) => {
                           options={structure.options}
                           onChange={(e) => {
                             formik.handleChange(e);
-                            structure.name === "storage_loc" &&
-                              handleStorageNameChange(e.target.value);
                           }}
                           defaultValue=""
                         />
@@ -213,5 +205,7 @@ const RequestForm = ({setIsShownStorageLocation}) => {
     </Formik>
   );
 };
-
+RequestForm.propTypes = {
+  setIsShownStorageLocation: PropTypes.func.isRequired,
+};
 export default RequestForm;

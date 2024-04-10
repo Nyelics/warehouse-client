@@ -1,16 +1,15 @@
 import "./App.css";
-import React, {useEffect, useState} from "react";
 import {Routes, Route, Navigate} from "react-router-dom";
 import LandingPage from "./Pages/LandingPage/LandingPage";
 import Login from "./Pages/LoginPage/Login";
 import AdminLayoutPage from "./Users/Administrator/layout/LayoutPage";
-import QELayoutPage from "./Users/QualityEngineer/layout/LayoutPage";
-import WALayoutPage from "./Users/WarehouseAssociate/layout/LayoutPage";
+// import QELayoutPage from "./Users/QualityEngineer/layout/LayoutPage";
+// import WALayoutPage from "./Users/WarehouseAssociate/layout/LayoutPage";
 import Notfound from "./Users/Administrator/Pages/NotFound";
 import adminRoutes from "./routes/AdminRoutes";
-import qeRoutes from "./routes/QualityEngineerRoutes";
-import waRoutes from "./routes/WarehouseAssociateRoutes";
-import dsRoutes from "./routes/DummySupplier";
+// import qeRoutes from "./routes/QualityEngineerRoutes";
+// import waRoutes from "./routes/WarehouseAssociateRoutes";
+// import dsRoutes from "./routes/DummySupplier";
 import {useAuthContext} from "./hooks/useAuthContext";
 
 const App = () => {
@@ -28,7 +27,7 @@ const App = () => {
             />
           ))}
         </Route>
-        <Route element={<QELayoutPage />}>
+        {/* <Route element={<QELayoutPage />}>
           {qeRoutes.map((route, index) => (
             <Route
               key={index}
@@ -54,7 +53,7 @@ const App = () => {
               element={isLoggedIn ? route.element : <Navigate to="/login" />}
             />
           ))}
-        </Route>
+        </Route> */}
         <Route path="/login" element={<Login />} />
         <Route path="/" element={<LandingPage />} />
         <Route path="/*" element={<Notfound />} />

@@ -1,21 +1,27 @@
-import React, {useEffect, useState} from "react";
+import {useEffect, useState} from "react";
 import FormikControl from "../../../../../components/Formik/FormikControl";
 import {Form, Formik} from "formik";
 import {Row, Col} from "react-bootstrap";
 import {getStorages} from "../../../../../api/storage";
+import PropTypes from "prop-types"; // Import PropTypes
+
 const StockTransferComponent = ({maxValue}) => {
   const [storages, setStorages] = useState([]);
-  useEffect(() => {
-    getStorageFunction();
-  }, []);
 
-  const getStorageFunction = async () => {
-    try {
-      const data = await getStorages();
-      setStorages(data);
-      storages && console.log(storages);
-    } catch (error) {}
-  };
+  useEffect(() => {
+    const getStorageFunction = async () => {
+      try {
+        const data = await getStorages();
+        setStorages(data);
+        storages && console.log(storages);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    getStorageFunction();
+  }, [storages]);
+
   return (
     <Formik>
       {(formik) => (
@@ -82,5 +88,7 @@ const StockTransferComponent = ({maxValue}) => {
     </Formik>
   );
 };
-
+StockTransferComponent.propTypes = {
+  maxValue: PropTypes.func.isRequired,
+};
 export default StockTransferComponent;

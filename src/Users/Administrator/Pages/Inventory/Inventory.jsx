@@ -1,6 +1,6 @@
-import React, {useState, useEffect} from "react";
-import {Card, Row} from "react-bootstrap";
-import {Tabs, Tab, Alert} from "react-bootstrap";
+import {useState, useEffect} from "react";
+import {Card} from "react-bootstrap";
+import {Tabs, Tab} from "react-bootstrap";
 import {useSessionContext} from "../../../../hooks/useSessionContext";
 import StorageComponent from "./Storage/StorageComponent";
 import RequestsComponent from "./Requests/RequestsComponent";

@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import {useEffect, useState} from "react";
 import {getStorages} from "../../api/storage";
 const useStorage = () => {
   const [storageData, setStorageData] = useState([]);
