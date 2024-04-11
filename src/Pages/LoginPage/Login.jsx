@@ -14,10 +14,10 @@ const Login = () => {
 
   const routes = [
     {role_name: "Administrator", route: "/dashboard"},
-    // {role_name: "Warehouse Manager", route: "/wm/dashboard"},
-    // {role_name: "Dummy Supplier", route: "/ds/reports"},
-    // {role_name: "Quality Engineer", route: "/qe/dashboard"},
-    // {role_name: "Warehouse Associate", route: "/wa/inventory"},
+    {role_name: "Warehouse Manager", route: "/wm/dashboard"},
+    {role_name: "Dummy Supplier", route: "/ds/reports"},
+    {role_name: "Quality Engineer", route: "/qe/dashboard"},
+    {role_name: "Warehouse Associate", route: "/wa/inventory"},
   ];
 
   async function onSubmit(values) {
