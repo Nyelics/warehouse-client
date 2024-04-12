@@ -1,32 +1,31 @@
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import {ListGroup} from "react-bootstrap";
 import {getMessages, getMessage} from "../../api/message";
 import {GoDot, GoDotFill} from "react-icons/go";
 import {useSessionContext} from "../../hooks/useSessionContext";
 import {useWebSocket} from "../../hooks/useWebSocket";
 import {motion} from "framer-motion";
-import PropTypes from "prop-types"; // Import PropTypes
-
-const PeopleComponent = ({setDisplayMessages, setIsShownChatBox}) => {
+const peopleComponent = ({setDisplayMessages, setIsShownChatBox}) => {
   const [people, setpeople] = useState([]);
   const {onlineUsers} = useWebSocket();
   const {sessionData} = useSessionContext();
-  useEffect(() => {
-    const viewMessages = async () => {
-      try {
-        const res = await getMessages({
-          data: sessionData.data,
-          token: sessionData.token,
-        });
-        const data = await res;
-        setpeople(data);
-      } catch (error) {
-        console.error("Error fetching messages:", error);
-      }
-    };
 
+  useEffect(() => {
     viewMessages();
   }, [sessionData, onlineUsers]);
+
+  const viewMessages = async () => {
+    try {
+      const res = await getMessages({
+        data: sessionData.data,
+        token: sessionData.token,
+      });
+      const data = await res;
+      setpeople(data);
+    } catch (error) {
+      console.error("Error fetching messages:", error);
+    }
+  };
 
   async function viewMessage(person) {
     try {
@@ -48,8 +47,6 @@ const PeopleComponent = ({setDisplayMessages, setIsShownChatBox}) => {
 
   async function handleChatBox(person) {
     setIsShownChatBox(true);
-    console.log(person);
-    // Call the viewMessage
     viewMessage(person)
       .then((recentConversation) => {
         // Once the promise resolves, update the state
@@ -91,7 +88,7 @@ const PeopleComponent = ({setDisplayMessages, setIsShownChatBox}) => {
               // href={`#${people.user_id}`}
               style={{height: "150px", padding: "20px"}}
               className="mb-2"
-              onClick={handleChatBox(people)}
+              onClick={() => handleChatBox(people)}
             >
               <div style={{display: "flex"}}>
                 {people.user_image_link ? (
@@ -184,9 +181,4 @@ const PeopleComponent = ({setDisplayMessages, setIsShownChatBox}) => {
   );
 };
 
-PeopleComponent.propTypes = {
-  setDisplayMessages: PropTypes.func.isRequired,
-  setIsShownChatBox: PropTypes.func.isRequired,
-};
-
-export default PeopleComponent;
+export default peopleComponent;

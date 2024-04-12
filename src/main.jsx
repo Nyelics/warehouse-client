@@ -1,4 +1,4 @@
-import ReactDOM from "react-dom"; // Correct import
+import ReactDOM from "react-dom/client"; // Correct import
 import App from "./App.jsx";
 import {BrowserRouter} from "react-router-dom";
 import "react-bootstrap-table-next/dist/react-bootstrap-table2.min.css";

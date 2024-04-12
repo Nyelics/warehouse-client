@@ -1,5 +1,4 @@
 import {createContext, useState} from "react";
-import PropTypes from "prop-types"; // Import PropTypes
 
 export const SessionContext = createContext(null);
 
@@ -11,8 +10,4 @@ export const SessionProvider = ({children}) => {
       {children}
     </SessionContext.Provider>
   );
-};
-
-SessionProvider.propTypes = {
-  children: PropTypes.func.isRequired,
 };

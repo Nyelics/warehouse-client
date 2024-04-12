@@ -1,6 +1,5 @@
 import {Form} from "react-bootstrap";
 import {ErrorMessage} from "formik";
-import PropTypes from "prop-types"; // Import PropTypes
 
 const SelectComponent = ({label, name, options, ...rest}) => {
   return (
@@ -24,9 +23,5 @@ const SelectComponent = ({label, name, options, ...rest}) => {
     </Form.Group>
   );
 };
-SelectComponent.propTypes = {
-  label: PropTypes.func.isRequired,
-  name: PropTypes.func.isRequired,
-  options: PropTypes.func.isRequired,
-};
+
 export default SelectComponent;

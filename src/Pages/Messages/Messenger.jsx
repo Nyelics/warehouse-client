@@ -1,4 +1,4 @@
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import {Row, Col} from "react-bootstrap";
 import PeopleComponent from "./PeopleComponent";
 import {useSessionContext} from "../../hooks/useSessionContext";
@@ -12,8 +12,9 @@ const Messenger = () => {
   const {sessionData} = useSessionContext();
 
   useEffect(() => {
+    // socket.emit("online-user", sessionData.data);
     socket.emit("reconnect-user", sessionData);
-  }, [sessionData, socket]);
+  }, []);
 
   return (
     <Row>

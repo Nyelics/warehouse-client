@@ -2,7 +2,6 @@ import TextAreaComponent from "../TextAreaComponent";
 import SelectComponent from "../SelectComponent";
 import InputComponent from "../InputComponent";
 import CheckBoxComponent from "../CheckBoxComponent";
-import PropTypes from "prop-types"; // Import PropTypes
 
 function FormikControl({control, ...rest}) {
   switch (control) {
@@ -18,9 +17,5 @@ function FormikControl({control, ...rest}) {
       return null;
   }
 }
-
-FormikControl.propTypes = {
-  control: PropTypes.func.isRequired,
-};
 
 export default FormikControl;

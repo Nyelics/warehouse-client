@@ -1,24 +1,25 @@
-import {useState, useEffect} from "react";
+import React, {useState, useEffect} from "react";
 import {Card, Row, Col, Button} from "react-bootstrap";
 import useStorage from "../../../../../hooks/api/useStorage";
 import {completed} from "../../../../../api/supply";
-import PropTypes from "prop-types"; // Import PropTypes
 
 const SuppliesViewerComponent = ({isSetManageSupply, setSupplyData}) => {
   const {storageData} = useStorage();
   const [units, setUnits] = useState([]);
+
   useEffect(() => {
-    calculateCapacity();
+    const fetchCompletedData = async () => {
+      try {
+        const data = await completed();
+        console.log(`completed data`, data);
+        setUnits(data);
+      } catch (error) {
+        console.error(`cannot fetch data`, error);
+      }
+    };
+
+    fetchCompletedData();
   }, []);
-  const calculateCapacity = async () => {
-    try {
-      const data = await completed();
-      console.log(`completed data`, data);
-      setUnits(data);
-    } catch (error) {
-      console.error(`cannot fetch data`, error);
-    }
-  };
 
   const supplyCapacityData = (value) => {
     setSupplyData(value);
@@ -28,12 +29,11 @@ const SuppliesViewerComponent = ({isSetManageSupply, setSupplyData}) => {
   return (
     <Row>
       {storageData ? (
-        storageData.map((storage) => (
-          <Col lg={3} key={storage.name}>
+        storageData.map((storage, index) => (
+          <Col lg={3} key={index}>
             <Card style={{minHeight: "300px"}}>
               <Card.Header>
-                {" "}
-                <h5 className="m-0">{storage.name}</h5>{" "}
+                <h5 className="m-0">{storage.name}</h5>
               </Card.Header>
               <Card.Body style={{fontSize: "14px"}}>
                 {storage.location}
@@ -44,12 +44,12 @@ const SuppliesViewerComponent = ({isSetManageSupply, setSupplyData}) => {
                 <span className="text-muted">Maximum Capacity:</span>{" "}
                 {storage.capacity} units
               </Card.Footer>
-              {units.length > 0 ? (
-                units.map((unit) => (
-                  <>
-                    {unit.name === storage.name && (
-                      <>
-                        <Card.Footer key={unit.name}>
+              {units.length > 0 &&
+                units.map((unit, unitIndex) => {
+                  if (unit.name === storage.name) {
+                    return (
+                      <React.Fragment key={unitIndex}>
+                        <Card.Footer>
                           Free Space:
                           <div
                             style={{
@@ -66,21 +66,26 @@ const SuppliesViewerComponent = ({isSetManageSupply, setSupplyData}) => {
                         <Card.Footer>
                           <Button
                             variant="success"
-                            onClick={supplyCapacityData({
-                              storage_name: unit.name,
-                              storage_capacity: unit.capacity,
-                              storage_used: unit.total_quantity,
-                            })}
+                            onClick={() =>
+                              supplyCapacityData({
+                                storage_name: unit.name,
+                                storage_capacity: unit.capacity,
+                                storage_used: unit.total_quantity,
+                              })
+                            }
                           >
                             Manage
                           </Button>
                         </Card.Footer>
-                      </>
-                    )}
-                  </>
-                ))
-              ) : (
-                <div style={{color: "green"}}>{storage.capacity} units</div>
+                      </React.Fragment>
+                    );
+                  }
+                  return null;
+                })}
+              {units.length === 0 && (
+                <Card.Footer style={{color: "green"}}>
+                  {storage.capacity} units
+                </Card.Footer>
               )}
             </Card>
           </Col>
@@ -90,10 +95,6 @@ const SuppliesViewerComponent = ({isSetManageSupply, setSupplyData}) => {
       )}
     </Row>
   );
-};
-SuppliesViewerComponent.propTypes = {
-  isSetManageSupply: PropTypes.func.isRequired,
-  setSupplyData: PropTypes.func.isRequired,
 };
 
 export default SuppliesViewerComponent;

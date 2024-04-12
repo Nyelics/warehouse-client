@@ -24,9 +24,11 @@ export const columns = [
     text: "Status",
     hidden: false,
     sort: true,
+    headerAlign: "center",
+    align: "center",
     style: (cell) => {
       return {
-        backgroundColor: cell === "Pending" ? "green" : "red",
+        backgroundColor: cell === "Pending" ? "#0d6efd" : "#20c997",
         color: "white",
       };
     },

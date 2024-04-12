@@ -2,8 +2,6 @@ import {useEffect, useState} from "react";
 import {columns} from "./UpdateUserColumn";
 import BSTableComponent from "../../../../../components/BSTableComponent";
 import {getUsers} from "../../../../../api/account";
-import PropTypes from "prop-types"; // Import PropTypes
-
 const UpdateUsersTable = ({setDataToUpdate, setIsInitiateForm}) => {
   const [usersData, setUsersData] = useState([]);
   useEffect(() => {
@@ -52,11 +50,6 @@ const UpdateUsersTable = ({setDataToUpdate, setIsInitiateForm}) => {
       BSRowEvent={BSRowEvent}
     />
   );
-};
-
-UpdateUsersTable.propTypes = {
-  setDataToUpdate: PropTypes.func.isRequired,
-  setIsInitiateForm: PropTypes.func.isRequired,
 };
 
 export default UpdateUsersTable;

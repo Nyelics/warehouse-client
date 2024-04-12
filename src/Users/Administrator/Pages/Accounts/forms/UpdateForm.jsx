@@ -4,7 +4,6 @@ import {Col, Row, Button} from "react-bootstrap";
 import {roles} from "../../../../../api/account";
 import FormikControl from "../../../../../components/Formik/FormikControl";
 import {motion} from "framer-motion";
-import PropTypes from "prop-types"; // Import PropTypes
 
 const UpdateForm = ({dataToUpdate}) => {
   const [updateData, setUpdateData] = useState({}); // Initialize empty state for initial values
@@ -191,10 +190,6 @@ const UpdateForm = ({dataToUpdate}) => {
       )}
     </Formik>
   );
-};
-
-UpdateForm.propTypes = {
-  dataToUpdate: PropTypes.func.isRequired,
 };
 
 export default UpdateForm;

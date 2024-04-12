@@ -132,13 +132,6 @@ const Sidebar = () => {
             Messages
           </Link>
         </li>
-
-        <li>
-          <Link to="/qe/account">
-            <i className="bx bx-group"></i>
-            Account
-          </Link>
-        </li>
       </ul>
       <ul className="side-menu">
         <li>

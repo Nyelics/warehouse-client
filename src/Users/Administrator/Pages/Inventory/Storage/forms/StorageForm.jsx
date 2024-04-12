@@ -3,7 +3,6 @@ import {toast} from "react-toastify";
 import {store} from "../../../../../../api/storage";
 import {Form, Button, Row, Col, InputGroup} from "react-bootstrap";
 import {motion} from "framer-motion";
-import PropTypes from "prop-types"; // Import PropTypes
 
 const StorageLocForm = ({setIsShownStorageLocation}) => {
   const onSubmit = async (values) => {
@@ -97,10 +96,6 @@ const StorageLocForm = ({setIsShownStorageLocation}) => {
       </Form>
     </motion.div>
   );
-};
-
-StorageLocForm.propTypes = {
-  setIsShownStorageLocation: PropTypes.func.isRequired,
 };
 
 export default StorageLocForm;

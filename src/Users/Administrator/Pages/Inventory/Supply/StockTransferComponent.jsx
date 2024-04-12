@@ -1,29 +1,71 @@
 import {useEffect, useState} from "react";
 import FormikControl from "../../../../../components/Formik/FormikControl";
 import {Form, Formik} from "formik";
-import {Row, Col} from "react-bootstrap";
+import {Row, Col, Button} from "react-bootstrap";
 import {getStorages} from "../../../../../api/storage";
-import PropTypes from "prop-types"; // Import PropTypes
+import {toast} from "react-toastify";
+import {store} from "../../../../../api/transferunits";
+import {useSessionContext} from "../../../../../hooks/useSessionContext";
 
-const StockTransferComponent = ({maxValue}) => {
+const StockTransferComponent = ({maxValue, supplyData}) => {
   const [storages, setStorages] = useState([]);
-
+  const {sessionData} = useSessionContext();
   useEffect(() => {
     const getStorageFunction = async () => {
       try {
         const data = await getStorages();
         setStorages(data);
-        storages && console.log(storages);
       } catch (error) {
         console.log(error);
       }
     };
 
     getStorageFunction();
-  }, [storages]);
+  }, []);
+
+  function handleTransferRequest(value) {
+    if (value.location === "" || value.units === "" || value.urgency === "") {
+      toast("Please Complete The Form to Submit Your Request", {
+        icon: <i className="bx bxs-layer-plus"></i>,
+        progressClassName:
+          "Toastify__toast-theme--colored Toastify__toast--info ",
+        autoClose: 1500,
+      });
+    }
+
+    proceedTransfer(value);
+  }
+
+  async function proceedTransfer(data) {
+    try {
+      const res = await store(data);
+      toast.success(res.message, {
+        icon: <i className="bx bx-task"></i>,
+        progressClassName:
+          "Toastify__toast-theme--colored Toastify__toast--info ",
+        autoClose: 1500,
+      });
+    } catch (error) {
+      toast.error(error, {
+        icon: <i className="bx bx-task-x"></i>,
+        progressClassName:
+          "Toastify__toast-theme--colored Toastify__toast--info ",
+        autoClose: 1500,
+      });
+    }
+  }
 
   return (
-    <Formik>
+    <Formik
+      initialValues={{
+        units: "",
+        urgency: "",
+        from_location: supplyData.storage_name,
+        to_location: "",
+        requester: sessionData.data.name,
+      }}
+      onSubmit={handleTransferRequest}
+    >
       {(formik) => (
         <Form>
           <Row>
@@ -72,15 +114,24 @@ const StockTransferComponent = ({maxValue}) => {
               <FormikControl
                 control="select"
                 label="Transfer to:"
-                name="location"
+                name="to_location"
                 onChange={formik.handleChange}
                 defaultValue=""
-                options={storages.map((storage) => ({
-                  key: storage.name,
-                  value: storage.id,
-                  display: storage.name,
-                }))}
+                options={storages
+                  .filter((storage) => storage.name !== supplyData.storage_name)
+                  .map((storage) => ({
+                    key: storage.name,
+                    value: storage.name,
+                    display: storage.name,
+                  }))}
               />
+            </Col>
+          </Row>
+          <Row className="my-3">
+            <Col lg={12} className="d-flex justify-content-end">
+              <Button variant="primary" type="submit">
+                Submit
+              </Button>
             </Col>
           </Row>
         </Form>
@@ -88,7 +139,5 @@ const StockTransferComponent = ({maxValue}) => {
     </Formik>
   );
 };
-StockTransferComponent.propTypes = {
-  maxValue: PropTypes.func.isRequired,
-};
+
 export default StockTransferComponent;

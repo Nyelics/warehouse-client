@@ -10,6 +10,11 @@ export const useSignIn = () => {
   const signIn = async (values) => {
     setIsLoading(true);
     setError(null);
+
+    if (values.username === "" || values.password === "") {
+      setError("Please Fill up both Username and Password");
+    }
+
     try {
       const response = await login(values);
 
@@ -20,10 +25,11 @@ export const useSignIn = () => {
         return token;
       } else {
         setIsLoading(false);
-        setError(response.error);
+        setError("Invalid Credentials");
         throw new Error("Authentication failed");
       }
     } catch (error) {
+      setError("Invalid Credentials");
       setIsLoading(false);
       console.error("Login error:", error);
       return false;

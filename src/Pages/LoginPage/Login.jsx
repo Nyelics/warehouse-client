@@ -5,6 +5,7 @@ import {useSignIn} from "../../hooks/useSignIn";
 import {useSessionContext} from "../../hooks/useSessionContext";
 import {verify} from "../../api/account";
 import {useNavigate} from "react-router-dom";
+import {Alert, Col, Spinner} from "react-bootstrap";
 const Login = () => {
   const {signIn, error, isLoading} = useSignIn();
   const {setSessionData} = useSessionContext();
@@ -20,13 +21,17 @@ const Login = () => {
     {role_name: "Warehouse Associate", route: "/wa/inventory"},
   ];
 
-  async function onSubmit(values) {
-    const token = await signIn(values);
-    if (token) {
-      console.log(token);
-      const sessionData = await signInVerification(token);
-      routeByRole(routes, sessionData.data.role_name);
+  async function onSubmit(values, {resetForm}) {
+    try {
+      const token = await signIn(values);
+      if (token) {
+        const sessionData = await signInVerification(token);
+        routeByRole(routes, sessionData.data.role_name);
+      }
+    } catch (error) {
+      console.error("somethings wrong", error);
     }
+    resetForm();
   }
 
   function routeByRole(routes, roleName) {
@@ -109,12 +114,25 @@ const Login = () => {
                     className="__btn solid"
                     disabled={isLoading}
                   >
-                    Login
+                    {isLoading ? (
+                      <Spinner animation="border" role="status">
+                        <span className="visually-hidden">Loading...</span>
+                      </Spinner>
+                    ) : (
+                      "Login"
+                    )}
                   </button>
                 </Form>
               )}
             </Formik>
-            {error && <div className="error">{error}</div>}
+
+            {error && (
+              <Col lg={6}>
+                <Alert className="error" variant="danger">
+                  {error}
+                </Alert>
+              </Col>
+            )}
           </div>
         </div>
         <div className="panels-container">

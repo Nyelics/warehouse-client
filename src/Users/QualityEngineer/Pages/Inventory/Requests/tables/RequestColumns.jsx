@@ -1,11 +1,11 @@
 import {useState} from "react";
 import {formatHumanReadableDate} from "../../../../../../utils/dateConverter";
 import {Button} from "react-bootstrap";
-import {Type} from "react-bootstrap-table2-editor";
 
 const RequestColumns = () => {
   const [receiving, setReceiving] = useState(false);
   const [productSku, setProductSku] = useState(null);
+
   function receivingSupply(sku) {
     setProductSku(sku);
     setReceiving(true);
@@ -93,7 +93,7 @@ const RequestColumns = () => {
             <Button
               variant="primary"
               className="px-3 py-2"
-              onClick={receivingSupply(row.supply_code)}
+              onClick={() => receivingSupply(row.supply_code)}
             >
               Received
             </Button>
@@ -102,23 +102,7 @@ const RequestColumns = () => {
           return <div>{cell}</div>;
         }
       },
-      editor: {
-        type: Type.SELECT,
-        options: [
-          {
-            value: "Cancelled",
-            label: "Cancelled",
-          },
-          {
-            value: "Recjected",
-            label: "Recjected",
-          },
-          {
-            value: "On hold",
-            label: "On hold",
-          },
-        ],
-      },
+      editable: false,
     },
     {
       dataField: "date_requested",

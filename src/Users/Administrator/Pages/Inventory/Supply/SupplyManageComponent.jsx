@@ -5,7 +5,6 @@ import FormikControl from "../../../../../components/Formik/FormikControl";
 import {Form, Formik} from "formik";
 import StockTransferComponent from "./StockTransferComponent";
 import StockDeliveryComponent from "./StockDeliveryComponent";
-import PropTypes from "prop-types"; // Import PropTypes
 
 const SupplyManageComponent = ({isSetManageSupply, supplyData}) => {
   const [percentage, setPercentage] = useState();
@@ -17,7 +16,12 @@ const SupplyManageComponent = ({isSetManageSupply, supplyData}) => {
   }, [supplyData]);
   function handleSupplyCommand(value) {
     if (value === "Stock Transfer") {
-      setCommand(<StockTransferComponent maxValue={supplyData.storage_used} />);
+      setCommand(
+        <StockTransferComponent
+          maxValue={supplyData.storage_used}
+          supplyData={supplyData}
+        />
+      );
     } else if (value === "For Delivery") {
       setCommand(<StockDeliveryComponent />);
     }
@@ -27,10 +31,10 @@ const SupplyManageComponent = ({isSetManageSupply, supplyData}) => {
       <motion.i
         whileHover={{scale: 2}}
         whileTap={{scale: 0.9}}
-        class="bx bx-left-arrow-alt"
+        className="bx bx-left-arrow-alt"
         style={{cursor: "pointer"}}
         onClick={() => isSetManageSupply(false)}
-      ></motion.i>{" "}
+      ></motion.i>
       <h5 className="p-3">Manage Supply</h5>
       <Container>
         <Row>
@@ -105,9 +109,5 @@ const SupplyManageComponent = ({isSetManageSupply, supplyData}) => {
       </Container>
     </div>
   );
-};
-SupplyManageComponent.propTypes = {
-  isSetManageSupply: PropTypes.func.isRequired,
-  supplyData: PropTypes.func.isRequired,
 };
 export default SupplyManageComponent;

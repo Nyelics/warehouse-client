@@ -46,20 +46,7 @@ const RequestsTable = () => {
     // showExpandColumn: true,
     onlyOneExpanding: true,
   };
-  const handleCellEdit = async (newValue, row, column) => {
-    try {
-      const response = await status(column);
-      toast(response.message, {
-        icon: <i className="bx bxs-layer-plus"></i>,
-        progressClassName:
-          "Toastify__toast-theme--colored Toastify__toast--info ",
-        autoClose: 1500,
-      });
-    } catch (error) {
-      console.log(error);
-      console.error("Signup error:", error);
-    }
-  };
+
   return (
     <>
       {receiving ? (
@@ -70,7 +57,6 @@ const RequestsTable = () => {
           BSData={SupReqData}
           BSColumn={columns}
           BSexpandRow={expandRow}
-          BShandleCellEdit={handleCellEdit}
         />
       )}
     </>

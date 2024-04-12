@@ -9,7 +9,6 @@ import {getStorages} from "../../../../../../api/storage";
 import {store} from "../../../../../../api/supply";
 import initialValues from "../../../../../../utils/initialValues.json";
 import {motion} from "framer-motion";
-import PropTypes from "prop-types"; // Import PropTypes
 
 const RequestForm = ({setIsShownStorageLocation}) => {
   const [supplyData, setSupplyData] = useState([]);
@@ -205,7 +204,5 @@ const RequestForm = ({setIsShownStorageLocation}) => {
     </Formik>
   );
 };
-RequestForm.propTypes = {
-  setIsShownStorageLocation: PropTypes.func.isRequired,
-};
+
 export default RequestForm;

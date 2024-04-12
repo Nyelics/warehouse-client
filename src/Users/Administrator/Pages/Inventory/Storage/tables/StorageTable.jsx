@@ -3,7 +3,6 @@ import {columns as storageColumn} from "./StorageColumns";
 import {formatHumanReadableDate} from "../../../../../../utils/dateConverter";
 import {motion} from "framer-motion";
 import {Button} from "react-bootstrap";
-import PropTypes from "prop-types"; // Import PropTypes
 
 const StorageTable = ({setIsShownStorageLocation, storageData}) => {
   const expandRow = {
@@ -43,8 +42,5 @@ const StorageTable = ({setIsShownStorageLocation, storageData}) => {
     </div>
   );
 };
-StorageTable.propTypes = {
-  setIsShownStorageLocation: PropTypes.func.isRequired,
-  storageData: PropTypes.func.isRequired,
-};
+
 export default StorageTable;
