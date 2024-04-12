@@ -127,7 +127,7 @@ const Sidebar = () => {
           </Link>
         </li>
         <li>
-          <Link to="/messenger">
+          <Link to="/qe/messenger">
             <i className="bx bx-message"></i>
             Messages
           </Link>
