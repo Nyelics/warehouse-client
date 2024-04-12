@@ -15,10 +15,7 @@ const Login = () => {
 
   const routes = [
     {role_name: "Administrator", route: "/dashboard"},
-    {role_name: "Warehouse Manager", route: "/wm/dashboard"},
-    {role_name: "Warehouse Associate", route: "/ds/reports"},
-    {role_name: "Quality Engineer", route: "/qe/dashboard"},
-    // {role_name: "Warehouse Associate", route: "/wa/inventory"},
+    {role_name: "Warehouse Associate", route: "/qe/dashboard"},
   ];
 
   async function onSubmit(values, {resetForm}) {
