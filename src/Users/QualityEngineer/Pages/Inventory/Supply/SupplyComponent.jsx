@@ -1,23 +1,32 @@
-import {useEffect, useState} from "react";
-import {getTransferRequests} from "../../../../../api/transferunits";
-import BSTableComponent from "../../../../../components/BSTableComponent";
-import {columns} from "./SupplyColumns";
+import {useState} from "react";
+import {Alert} from "react-bootstrap";
+import SupplyManageComponent from "./SupplyManageComponent";
+import SuppliesViewerComponent from "./SuppliesViewerComponent";
 const SupplyComponent = () => {
-  const [trData, setTrData] = useState([]);
-  useEffect(() => {
-    getAllTransferRequests();
-  }, []);
-
-  const getAllTransferRequests = async () => {
-    try {
-      const res = await getTransferRequests();
-      setTrData(res);
-    } catch (error) {
-      console.log("cannot fetch data from transfer request api", error);
-    }
-  };
-
-  return <BSTableComponent BSKey="id" BSData={trData} BSColumn={columns} />;
+  const [isManageSupply, isSetManageSupply] = useState(false);
+  const [supplyData, setSupplyData] = useState([]);
+  return (
+    <>
+      <Alert variant="success">
+        <Alert.Heading>Welcome to Supplies Management!</Alert.Heading>
+        <p>
+          🎉 Get ready to optimize your inventory! 📦 Pick a storage location,
+          and unlock a world of organized supplies ready for action. 💼
+        </p>
+      </Alert>
+      {isManageSupply ? (
+        <SupplyManageComponent
+          isSetManageSupply={isSetManageSupply}
+          supplyData={supplyData}
+        />
+      ) : (
+        <SuppliesViewerComponent
+          isSetManageSupply={isSetManageSupply}
+          setSupplyData={setSupplyData}
+        />
+      )}
+    </>
+  );
 };
 
 export default SupplyComponent;

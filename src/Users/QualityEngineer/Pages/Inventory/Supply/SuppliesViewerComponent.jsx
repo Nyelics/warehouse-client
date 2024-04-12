@@ -68,6 +68,7 @@ const SuppliesViewerComponent = ({isSetManageSupply, setSupplyData}) => {
                             variant="success"
                             onClick={() =>
                               supplyCapacityData({
+                                storage_id: unit.id,
                                 storage_name: unit.name,
                                 storage_capacity: unit.capacity,
                                 storage_used: unit.total_quantity,

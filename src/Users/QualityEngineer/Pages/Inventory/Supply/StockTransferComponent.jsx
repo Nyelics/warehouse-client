@@ -6,9 +6,11 @@ import {getStorages} from "../../../../../api/storage";
 import {toast} from "react-toastify";
 import {store} from "../../../../../api/transferunits";
 import {useSessionContext} from "../../../../../hooks/useSessionContext";
+import {supplycode} from "../../../../../api/supply";
 
 const StockTransferComponent = ({maxValue, supplyData}) => {
   const [storages, setStorages] = useState([]);
+  const [supplyCodeData, setSupplyCodeData] = useState([]);
   const {sessionData} = useSessionContext();
   useEffect(() => {
     const getStorageFunction = async () => {
@@ -19,9 +21,21 @@ const StockTransferComponent = ({maxValue, supplyData}) => {
         console.log(error);
       }
     };
+    const getSupplyCode = async () => {
+      try {
+        const data = await supplycode(supplyData.storage_id);
+        console.log(data);
+        setSupplyCodeData(data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
 
     getStorageFunction();
+    getSupplyCode();
   }, []);
+
+  supplyData && console.log(supplyData.storage_id);
 
   function handleTransferRequest(value) {
     if (value.location === "" || value.units === "" || value.urgency === "") {
@@ -59,6 +73,7 @@ const StockTransferComponent = ({maxValue, supplyData}) => {
     <Formik
       initialValues={{
         units: "",
+        supplycode: "",
         urgency: "",
         from_location: supplyData.storage_name,
         to_location: "",
@@ -78,6 +93,24 @@ const StockTransferComponent = ({maxValue, supplyData}) => {
                 label="How many units ?"
                 defaultValue={maxValue}
                 max={maxValue}
+              />
+            </Col>
+            <Col lg={4}>
+              <FormikControl
+                control="select"
+                label="SKU"
+                name="supply_code"
+                onChange={formik.handleChange}
+                defaultValue=""
+                options={
+                  supplyCodeData &&
+                  supplyCodeData.map((code) => ({
+                    // Use parentheses for the mapped object
+                    key: code.supply_code,
+                    value: code.supply_code,
+                    display: code.supply_code,
+                  }))
+                }
               />
             </Col>
             <Col lg={4}>
